@@ -1,0 +1,43 @@
+# ── Quarto build output ──────────────────────────────────────────────────────
+_book/
+_freeze/
+
+# ── LaTeX intermediate files ─────────────────────────────────────────────────
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.xdv
+# Keep generated .tex (useful for debugging); comment out if not needed
+# *.tex
+
+# ── Jupyter / Python ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.jupyter/
+*.pyc
+
+# ── OS artefacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editor ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

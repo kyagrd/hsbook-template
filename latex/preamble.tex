@@ -1,0 +1,65 @@
+%% LaTeX preamble for Korean Haskell book
+%% Uses scrbook (KOMA-Script) + kotex for Korean typesetting
+
+% ── Korean language support ─────────────────────────────────────────────────
+\usepackage{kotex}          % Korean typography (requires XeLaTeX)
+
+% ── Font configuration ───────────────────────────────────────────────────────
+% Uncomment and adjust if specific fonts are installed on your system.
+% For broad compatibility the defaults provided by kotex are used.
+%
+% \setmainfont[Ligatures=TeX]{Noto Serif CJK KR}
+% \setsansfont{Noto Sans CJK KR}
+% \setmonofont{D2Coding}
+
+% ── Mathematics ──────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{정리}[chapter]
+\newtheorem{lemma}[theorem]{보조 정리}
+\newtheorem{definition}[theorem]{정의}
+\newtheorem{example}[theorem]{예제}
+
+% ── Source-code listings ─────────────────────────────────────────────────────
+% Quarto renders code blocks via its own highlighting pipeline; these settings
+% tune the appearance of the resulting verbatim/fancyvrb output.
+\usepackage{fancyvrb}
+\usepackage{fvextra}        % line-wrapping inside verbatim
+
+% Wrap long lines in code blocks instead of overflowing the margin
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  breaklines,
+  breaksymbolleft={},
+  commandchars=\\\{\}
+}
+
+% ── KOMA-Script chapter/section style ────────────────────────────────────────
+\KOMAoptions{
+  chapterprefix=true,       % "제 N 장" style headings
+  headings=big
+}
+
+% ── Hyperlinks (loaded by Quarto; just configure colours here) ───────────────
+\hypersetup{
+  linkcolor  = black,
+  citecolor  = teal,
+  urlcolor   = teal
+}
+
+% ── Page geometry ────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  top    = 30mm,
+  bottom = 30mm,
+  inner  = 25mm,
+  outer  = 25mm
+}
+
+% ── Misc utilities ───────────────────────────────────────────────────────────
+\usepackage{microtype}      % microtypographic improvements
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{graphicx}       % figure inclusion
+\usepackage{caption}        % caption customisation

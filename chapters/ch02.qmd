@@ -1,0 +1,161 @@
+---
+title: "기본 문법과 타입"
+jupyter:
+  kernelspec:
+    display_name: Haskell
+    language: haskell
+    name: haskell
+---
+
+# 기본 문법과 타입
+
+## 타입 클래스(Type Class)
+
+타입 클래스는 Haskell 타입 시스템의 핵심 개념으로,
+다형성(polymorphism)을 제공합니다.
+
+```{haskell}
+-- Eq 타입 클래스: 동등 비교
+print (1 == 1)
+print (1 /= 2)
+print ("hello" == "world")
+```
+
+```{haskell}
+-- Ord 타입 클래스: 순서 비교
+print (compare 3 5)
+print (max 10 20)
+print (min 10 20)
+```
+
+```{haskell}
+-- Show 타입 클래스: 문자열로 변환
+print (show 42)
+print (show True)
+print (show [1,2,3 :: Int])
+```
+
+## 패턴 매칭(Pattern Matching)
+
+패턴 매칭은 Haskell에서 값의 구조를 분해하는 강력한 방법입니다.
+
+```{haskell}
+-- 리스트 패턴 매칭
+myHead :: [a] -> a
+myHead []    = error "empty list"
+myHead (x:_) = x
+
+myHead [10, 20, 30 :: Int]
+```
+
+```{haskell}
+-- 튜플 패턴 매칭
+fst' :: (a, b) -> a
+fst' (x, _) = x
+
+snd' :: (a, b) -> b
+snd' (_, y) = y
+
+let pair = (42 :: Int, "hello")
+print (fst' pair)
+print (snd' pair)
+```
+
+```{haskell}
+-- 정수 패턴 매칭으로 팩토리얼 정의
+factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+factorial 10
+```
+
+## 고차 함수(Higher-Order Functions)
+
+Haskell에서 함수는 다른 함수를 인수로 받거나 반환할 수 있습니다.
+
+```{haskell}
+-- map: 리스트 각 원소에 함수 적용
+print (map (*2) [1..5 :: Int])
+print (map show [1..5 :: Int])
+```
+
+```{haskell}
+-- filter: 조건에 맞는 원소 선택
+print (filter even [1..10 :: Int])
+print (filter (>5) [1..10 :: Int])
+```
+
+```{haskell}
+-- foldr / foldl: 리스트 접기
+print (foldr (+) 0 [1..10 :: Int])
+print (foldl (*) 1 [1..5  :: Int])
+```
+
+```{haskell}
+-- 함수 합성 (.)
+let doubleAndIncrement = (+1) . (*2) :: Int -> Int
+print (doubleAndIncrement 3)
+print (map doubleAndIncrement [1..5])
+```
+
+## 람다 표현식(Lambda Expression)
+
+```{haskell}
+-- 람다로 익명 함수 정의
+let add = \x y -> x + y :: Int -> Int -> Int
+print (add 3 4)
+
+-- map에 람다 사용
+print (map (\x -> x * x) [1..5 :: Int])
+```
+
+## 대수적 데이터 타입(Algebraic Data Type)
+
+```{haskell}
+-- 간단한 대수적 데이터 타입
+data Shape = Circle Double
+           | Rectangle Double Double
+           deriving (Show)
+
+area :: Shape -> Double
+area (Circle r)      = pi * r * r
+area (Rectangle w h) = w * h
+
+print (area (Circle 5.0))
+print (area (Rectangle 3.0 4.0))
+```
+
+## Maybe 타입
+
+`Maybe` 타입은 실패할 수 있는 계산을 표현합니다.
+
+```{haskell}
+safeDiv :: Int -> Int -> Maybe Int
+safeDiv _ 0 = Nothing
+safeDiv x y = Just (div x y)
+
+print (safeDiv 10 2)
+print (safeDiv 10 0)
+```
+
+```{haskell}
+-- Maybe를 다루는 함수
+describeResult :: Maybe Int -> String
+describeResult Nothing  = "나눗셈 오류: 0으로 나눌 수 없습니다."
+describeResult (Just n) = "결과: " ++ show n
+
+putStrLn (describeResult (safeDiv 20 4))
+putStrLn (describeResult (safeDiv 20 0))
+```
+
+## 요약
+
+이 챕터에서는 다음 내용을 학습했습니다:
+
+- 타입 클래스와 다형성
+- 패턴 매칭
+- 고차 함수 (`map`, `filter`, `fold`)
+- 람다 표현식
+- 대수적 데이터 타입
+- `Maybe` 타입

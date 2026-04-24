@@ -1,0 +1,37 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Haskell 프로그래밍"
+  author: "저자 이름"
+  date: today
+  language: ko
+  chapters:
+    - index.qmd
+    - chapters/ch01.qmd
+    - chapters/ch02.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github
+  pdf:
+    documentclass: scrbook
+    classoption:
+      - oneside
+      - 11pt
+    pdf-engine: xelatex
+    include-in-header: latex/preamble.tex
+    keep-tex: true
+    number-sections: true
+    colorlinks: true
+    highlight-style: github
+
+execute:
+  freeze: auto
