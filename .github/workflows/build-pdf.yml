@@ -35,7 +35,7 @@ jobs:
           run: |
             set -euxo pipefail
             QUARTO_VERSION="1.6.40"
-            wget -q "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
+            curl -fsSL -o "quarto-${QUARTO_VERSION}-linux-amd64.deb" "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
             dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
             quarto render --to pdf --execute false
 
