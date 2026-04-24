@@ -25,7 +25,7 @@ jobs:
       #   correctly via dpkg.
       #
       #   IHaskell (the Haskell Jupyter kernel) is not installed in CI,
-      #   so we pass --execute false to skip code cell execution.
+      #   so we pass --no-execute to skip code cell execution entirely.
       #   This still validates the full LaTeX/PDF pipeline including
       #   kotex, scrbook, and the custom preamble.
       - name: Render PDF
@@ -34,15 +34,11 @@ jobs:
           os: debian
           run: |
             set -euxo pipefail
-            # Install Jupyter (required by Quarto even when --execute false is used)
-            apt-get update -q
-            apt-get install -y python3-pip
-            pip3 install jupyter --break-system-packages
             # Install Quarto
             QUARTO_VERSION="1.6.40"
             curl -fsSL -o "quarto-${QUARTO_VERSION}-linux-amd64.deb" "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
             dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
-            quarto render --to pdf --execute false
+            quarto render --to pdf --no-execute
 
       # ── 5. Upload the built PDF as a workflow artifact ───────────────────────
       - name: Upload PDF artifact
