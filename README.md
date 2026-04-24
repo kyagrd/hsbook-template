@@ -1,3 +1,5 @@
+[![Build PDF](https://github.com/kyagrd/hsbook-template/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/kyagrd/hsbook-template/actions/workflows/build-pdf.yml)
+
 # hsbook-template
 
 IHaskell Jupyter Notebook 여러 개를 Jupytext로 동기화하고 Quarto로 묶어
