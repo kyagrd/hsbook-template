@@ -34,6 +34,11 @@ jobs:
           os: debian
           run: |
             set -euxo pipefail
+            # Install Jupyter (required by Quarto even when --execute false is used)
+            apt-get update -q
+            apt-get install -y python3-pip
+            pip3 install jupyter --break-system-packages
+            # Install Quarto
             QUARTO_VERSION="1.6.40"
             curl -fsSL -o "quarto-${QUARTO_VERSION}-linux-amd64.deb" "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
             dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
