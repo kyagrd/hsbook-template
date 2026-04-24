@@ -42,10 +42,13 @@
 }
 
 % ── Hyperlinks (loaded by Quarto; just configure colours here) ───────────────
-\hypersetup{
-  linkcolor  = black,
-  citecolor  = teal,
-  urlcolor   = teal
+% \hypersetup must be deferred until after hyperref is loaded by Quarto.
+\AtBeginDocument{%
+  \hypersetup{
+    linkcolor  = black,
+    citecolor  = teal,
+    urlcolor   = teal
+  }%
 }
 
 % ── Page geometry ────────────────────────────────────────────────────────────
