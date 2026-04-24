@@ -1,0 +1,77 @@
+name: Build PDF
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Install Quarto ────────────────────────────────────────────────────
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      # ── 3. Install TeX Live with Korean (kotex) support ──────────────────────
+      #
+      #   Required packages:
+      #     scheme-basic        – core binaries + latex/plain
+      #     collection-xetex    – XeLaTeX engine
+      #     collection-fontsrecommended – common fonts
+      #     kotex-utf           – kotex (Korean LaTeX)
+      #     koma-script         – scrbook document class
+      #     fancyvrb fvextra    – code block rendering (used by preamble.tex)
+      #     microtype booktabs caption – utilities used in preamble.tex
+      #     unicode-math        – XeLaTeX Unicode math
+      #     xcolor              – miscellaneous TeX dependencies
+      - name: Install TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-basic
+            collection-xetex
+            collection-fontsrecommended
+            kotex-utf
+            koma-script
+            fancyvrb
+            fvextra
+            microtype
+            booktabs
+            caption
+            unicode-math
+            xcolor
+            hyperref
+            geometry
+            amsmath
+            amssymb
+            amsthm
+            framed
+            upquote
+            csquotes
+            selnolig
+
+      # ── 4. Render PDF (code execution disabled) ──────────────────────────────
+      #
+      #   IHaskell (the Haskell Jupyter kernel) is not installed in CI,
+      #   so we pass --execute false to skip code cell execution.
+      #   This still validates the full LaTeX/PDF pipeline including
+      #   kotex, scrbook, and the custom preamble.
+      - name: Render PDF
+        run: quarto render --to pdf --execute false
+
+      # ── 5. Upload the built PDF as a workflow artifact ───────────────────────
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pdf
+          path: _book/*.pdf
+          if-no-files-found: error
