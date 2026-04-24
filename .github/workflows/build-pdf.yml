@@ -27,18 +27,43 @@ jobs:
           sudo dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
           quarto --version
 
-      # ── 3. Install TeX Live with XeLaTeX and Korean language support ─────────
-      - name: Install TeX Live (XeLaTeX + Korean)
-        shell: bash
-        run: |
-          set -euxo pipefail
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-xetex \
-            texlive-latex-recommended \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            texlive-lang-korean
+      # ── 3. Install TeX Live with Korean (kotex) support ──────────────────────
+      #
+      #   Required packages:
+      #     scheme-basic        – core binaries + latex/plain
+      #     collection-xetex    – XeLaTeX engine
+      #     collection-fontsrecommended – common fonts
+      #     kotex-utf           – kotex (Korean LaTeX)
+      #     koma-script         – scrbook document class
+      #     fancyvrb fvextra    – code block rendering (used by preamble.tex)
+      #     microtype booktabs caption – utilities used in preamble.tex
+      #     unicode-math        – XeLaTeX Unicode math
+      #     xcolor              – miscellaneous TeX dependencies
+      - name: Install TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-basic
+            collection-xetex
+            collection-fontsrecommended
+            kotex-utf
+            koma-script
+            fancyvrb
+            fvextra
+            microtype
+            booktabs
+            caption
+            unicode-math
+            xcolor
+            hyperref
+            geometry
+            amsmath
+            amssymb
+            amsthm
+            framed
+            upquote
+            csquotes
+            selnolig
 
       # ── 4. Render PDF (code execution disabled) ──────────────────────────────
       #
