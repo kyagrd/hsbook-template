@@ -17,56 +17,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── 2. Install Quarto ────────────────────────────────────────────────────
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      # ── 3. Install TeX Live with Korean (kotex) support ──────────────────────
+      # ── 2 & 3 & 4. Install Quarto + TeX Live (full), then render PDF ─────────
       #
-      #   Required packages:
-      #     scheme-basic        – core binaries + latex/plain
-      #     collection-xetex    – XeLaTeX engine
-      #     collection-fontsrecommended – common fonts
-      #     kotex-utf           – kotex (Korean LaTeX)
-      #     koma-script         – scrbook document class
-      #     fancyvrb fvextra    – code block rendering (used by preamble.tex)
-      #     microtype booktabs caption – utilities used in preamble.tex
-      #     unicode-math        – XeLaTeX Unicode math
-      #     xcolor              – miscellaneous TeX dependencies
-      - name: Install TeX Live
-        uses: teatimeguest/setup-texlive-action@v3
-        with:
-          packages: >-
-            scheme-basic
-            collection-xetex
-            collection-fontsrecommended
-            kotex-utf
-            koma-script
-            fancyvrb
-            fvextra
-            microtype
-            booktabs
-            caption
-            unicode-math
-            xcolor
-            hyperref
-            geometry
-            amsmath
-            amssymb
-            amsthm
-            framed
-            upquote
-            csquotes
-            selnolig
-
-      # ── 4. Render PDF (code execution disabled) ──────────────────────────────
+      #   xu-cheng/texlive-action runs commands inside a Docker container that
+      #   ships a complete TeX Live installation (including XeLaTeX and kotex).
+      #   We use the Debian-based image so that the Quarto .deb package installs
+      #   correctly via dpkg.
       #
       #   IHaskell (the Haskell Jupyter kernel) is not installed in CI,
-      #   so we pass --execute false to skip code cell execution.
+      #   so we pass --no-execute to skip code cell execution entirely.
       #   This still validates the full LaTeX/PDF pipeline including
       #   kotex, scrbook, and the custom preamble.
       - name: Render PDF
-        run: quarto render --to pdf --execute false
+        uses: xu-cheng/texlive-action@v3
+        with:
+          os: debian
+          run: |
+            set -euxo pipefail
+            # Install Quarto
+            QUARTO_VERSION="1.6.40"
+            curl -fsSL -o "quarto-${QUARTO_VERSION}-linux-amd64.deb" "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
+            dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
+            quarto render --to pdf --no-execute
 
       # ── 5. Upload the built PDF as a workflow artifact ───────────────────────
       - name: Upload PDF artifact
