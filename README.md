@@ -1,5 +1,7 @@
 # hsbook-template
 
+[![Build PDF](https://github.com/kyagrd/hsbook-template/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/kyagrd/hsbook-template/actions/workflows/build-pdf.yml)
+
 IHaskell Jupyter Notebook 여러 개를 Jupytext로 동기화하고 Quarto로 묶어
 **scrbook(KOMA-Script) + kotex** 기반의 한국어 LaTeX 책을 생성하는 저장소 템플릿입니다.
 
