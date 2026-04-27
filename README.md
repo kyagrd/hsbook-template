@@ -46,11 +46,13 @@ hsbook-template/
 > **kotex**는 XeLaTeX/LuaLaTeX 환경에서 동작합니다.  
 > TeX Live를 사용한다면 `texlive-lang-korean` 또는 `kotex` 패키지를 별도로 설치하세요.
 
-> GHC, Cabal 및 IHaskell 커널을 직접 빌드해 설치하려면 많은 메모리가 필요하고 GHC 버전 설정 등이 까다롭기 때문에 도커 이미지를 통해 활용하는 것을 권장합니다.
-> 참고로, `docker/ihasekll-quarto-jupytext`의 도커 이미지를 빌드해 `run_iqj.sh`로 실행하여 활jupyterlab, quarto, jupytext가 함께 설치된 개발환경(단, LaTeX는 제외)을 활용할 수 있습니다.
-> 도커 이미지를 통해 하스켈 주피터 노트북을 편집/실행하고 LaTeX빌드 로컬 환경(혹은 별도의 TexLive 도커 이미지 등)을 활용해 pdf를 생성하는 작업 방식을 추천합니다.
-> 이 이미지를 활용할 정도면 이미 LaTeX 환경은 설치해 놓은 경우가 많을 것이라서 이런 작업 방식을 추천한 것이지만, LaTeX이 로컬에 설치되지 않았고 설치할 계획도 없다면 
-> `docker/ihasekll-quarto-jupytext`의 Dockerfile을 TexLive및 필요한 LaTeX 패키지를 설치하도록 설정을 추가하여 활용하는 방법도 가능합니다.
+GHC, Cabal 및 IHaskell 커널을 직접 빌드해 설치하려면 많은 메모리가 필요하고 GHC 버전 설정 등이 까다롭기 때문에 도커 이미지를 통해 활용하는 것을 권장합니다.
+참고로, `docker/ihasekll-quarto-jupytext`의 도커 이미지를 빌드해 `run_iqj.sh`로 실행하여 활jupyterlab, quarto, jupytext가 함께 설치된 개발환경(단, LaTeX는 제외)을 활용할 수 있습니다.
+도커 이미지를 통해 하스켈 주피터 노트북을 편집/실행하고 HTML이나 LaTeX 소스코드 뽑는 정도까지만 하고, 실제 LaTeX빌드는 로컬 환경(혹은 별도의 TexLive 도커 이미지 등)에서 pdf를 생성하는 작업 방식을 추천합니다.
+이 경우 quarto를 로컬에도 중복으로 설치하여 quarto가 pandoc을 통해 LaTeX과 pdf를 생성하는 과정을 알아서 처리하도록 하는 겻이 편리합니다.
+
+이 이미지를 활용할 정도면 이미 LaTeX 환경은 설치해 놓은 경우가 많을 것이라서 불필요하게 도커 이미지 크기를 키우지 않기 위해 이런 작업 방식을 추천한 것이지만, LaTeX이 로컬에 설치되지 않았고 설치할 계획도 없다면 
+`docker/ihasekll-quarto-jupytext`의 Dockerfile에 TexLive및 필요한 LaTeX 패키지를 설치하도록 설정을 추가하여 활용하는 방법도 가능합니다.
 
 ---
 
@@ -69,13 +71,19 @@ cd hsbook-template
 quarto preview
 ```
 
-### 3. PDF(LaTeX) 빌드
-
+### 3. LaTeX 및 PDF 빌드
+LaTeX 소스코드까지만 생성하려면
+```bash
+quarto render --to latex
+```
+Pandoc을 통해
 ```bash
 quarto render --to pdf
 ```
 
 빌드 결과물은 `_book/` 디렉토리에 생성됩니다.
+
+
 
 ---
 
