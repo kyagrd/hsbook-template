@@ -80,7 +80,7 @@ Pandoc을 통해 pdf까지 한번애 생성하려면
 ```bash
 quarto render --to pdf
 ```
-노트북 실행 없이 pdf 생성하려면 (이미 qmd 실행 결과가 ipynb에 저장된 경우, 이를테면 도커 이미지로 노트북 편집/실행 후 로컬에서 pdf 빌드만 시킬 때) 
+노트북 실행 없이 pdf 생성하려면 (이미 `.qmd` 실행 결과가 `.ipynb`에 저장된 경우, 이를테면 도커 이미지로 노트북 편집/실행 후 로컬에서 pdf 빌드만 시킬 때) 
 ```bash
 quarto render --to pdf --no-execute
 ```
