@@ -20,6 +20,11 @@ hsbook-template/
 │   └── ch02.ipynb         # 2장 Jupyter Notebook (jupytext 동기)
 ├── latex/
 │   └── preamble.tex       # LaTeX 프리앰블 (kotex, scrbook 설정)
+├── docker/
+│   └── ihaskell-quarto-jupytext/
+│       ├── Dockerfile     # IHaskell + Quarto + Jupytext 도커 이미지 빌드 파일
+│       └── README.md      # 도커 이미지 빌드 및 실행 안내
+├── run_iqj.sh             # ihaskell-quarto-jupytext 도커 컨테이너 실행 스크립트
 ├── references.bib         # BibTeX 참고문헌
 ├── .jupytext.toml         # Jupytext 페어링 설정
 └── .gitignore
