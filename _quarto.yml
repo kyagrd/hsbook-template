@@ -34,4 +34,5 @@ format:
     highlight-style: github
 
 execute:
+  enabled: false # 커널 로드 방지 (노트북 편집/실행과 LaTeX 환경 분리시 유용)
   freeze: auto

@@ -1,18 +1,17 @@
 ---
-title: "기본 문법과 타입"
+title: 기본 문법과 타입
 jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.19.1
   kernelspec:
     display_name: Haskell
     language: haskell
     name: haskell
 ---
-
-# 기본 문법과 타입
-
-## 타입 클래스(Type Class)
-
-타입 클래스는 Haskell 타입 시스템의 핵심 개념으로,
-다형성(polymorphism)을 제공합니다.
 
 ```{haskell}
 -- Eq 타입 클래스: 동등 비교

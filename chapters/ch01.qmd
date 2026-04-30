@@ -1,18 +1,17 @@
 ---
-title: "Haskell 소개"
+title: Haskell 소개
 jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.19.1
   kernelspec:
     display_name: Haskell
     language: haskell
     name: haskell
 ---
-
-# Haskell 소개
-
-Haskell은 순수 함수형 프로그래밍 언어로, 강력한 정적 타입 시스템과
-지연 평가(lazy evaluation)를 특징으로 합니다.
-
-## 첫 번째 Haskell 프로그램
 
 ```{haskell}
 putStrLn "Hello, Haskell!"
