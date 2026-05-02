@@ -118,10 +118,8 @@ pip install jupyterlab-jupytext
 ---
 
 ## 새 챕터 추가
-
 1. `chapters/chXX.qmd` 파일을 생성합니다.
-2. YAML 프런트 매터에 IHaskell 커널을 지정합니다:
-
+1. YAML 프런트 매터에 IHaskell 커널을 지정합니다:
    ```yaml
    ---
    title: "챕터 제목"
@@ -132,14 +130,12 @@ pip install jupyterlab-jupytext
        name: haskell
    ---
    ```
-
-3. Jupytext로 `.ipynb` 파일을 생성합니다:
-
+1. Jupytext로 `.ipynb` 파일을 생성합니다:
    ```bash
    jupytext --to ipynb chapters/chXX.qmd
    ```
-
-4. `_quarto.yml`의 `chapters:` 목록에 새 파일을 추가합니다.
+1. `chXX.qmd` 파일을 생성하고 `chapters/chXX.qmd`를 embed 합니다.
+1. `_quarto.yml`의 `chapters:` 목록에 `chXX.qmd` 파일을 추가합니다.
 
 ---
 
