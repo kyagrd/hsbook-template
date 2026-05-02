@@ -9,8 +9,8 @@ book:
   language: ko
   chapters:
     - index.qmd
-    - chapters/ch01.qmd
-    - chapters/ch02.qmd
+    - ch01.qmd
+    - ch02.qmd
 
 bibliography: references.bib
 
@@ -21,6 +21,8 @@ format:
     toc-depth: 3
     number-sections: true
     highlight-style: github
+    # echo: true
+    # keep-ipynb: false
   pdf:
     documentclass: scrbook
     classoption:
@@ -28,11 +30,14 @@ format:
       - 11pt
     pdf-engine: xelatex
     include-in-header: latex/preamble.tex
-    keep-tex: true
+    # keep-tex: true
     number-sections: true
     colorlinks: true
     highlight-style: github
+    # echo: true
+    # keep-ipynb: false
 
 execute:
-  enabled: false # 커널 로드 방지 (노트북 편집/실행과 LaTeX 환경 분리시 유용)
-  freeze: auto
+  enabled: false
+  freeze: true
+  # echo: true

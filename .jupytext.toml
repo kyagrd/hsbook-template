@@ -1,9 +1,0 @@
-[jupytext]
-# Pair every notebook with a Quarto Markdown (.qmd) file in the same directory.
-# Run `jupytext --sync <file>` to keep both representations in sync.
-formats = "ipynb,qmd"
-
-# Use the "percent" cell delimiter  (# %%) rather than "light" so that
-# IHaskell magic commands (e.g. :set, :type) are preserved correctly.
-notebook_metadata_filter = "all"
-cell_metadata_filter      = "all"

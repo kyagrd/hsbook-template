@@ -1,7 +1,8 @@
 ---
-title: Haskell 소개
+title: 기본 산술 연산
 jupyter:
   jupytext:
+    formats: ipynb,qmd:quarto
     text_representation:
       extension: .qmd
       format_name: quarto
@@ -17,7 +18,7 @@ jupyter:
 putStrLn "Hello, Haskell!"
 ```
 
-## 기본 산술 연산
+
 
 ```{haskell}
 -- 정수 연산
