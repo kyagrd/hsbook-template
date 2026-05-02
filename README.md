@@ -81,7 +81,7 @@ Pandoc을 통해 pdf까지 한번애 생성하려면
 ```bash
 quarto render --to pdf
 ```
-그냥 아무 옶션 업이 이렇게 실행시키면 html과 pdf 모두 생성
+그냥 아무 옵션 없이 이렇게 실행시키면 html과 pdf 모두 생성
 ```bash
 quarto render
 ```
