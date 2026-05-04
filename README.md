@@ -124,6 +124,13 @@ pip install jupyterlab-jupytext
    ---
    title: "챕터 제목"
    jupyter:
+     jupytext:
+       formats: ipynb,qmd:quarto  # sync 설정
+       text_representation:
+         extension: .qmd
+         format_name: quarto
+         format_version: '1.0'
+         jupytext_version: 1.19.1
      kernelspec:
        display_name: Haskell
        language: haskell
