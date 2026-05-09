@@ -2,4 +2,4 @@
 title: Haskell 소개
 ---
 
-{{< embed chapters/ch02.ipynb echo=true >}}
+{{< include chapters/ch02.md echo=true >}}

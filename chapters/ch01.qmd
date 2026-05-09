@@ -1,8 +1,7 @@
 ---
-title: 기본 산술 연산
 jupyter:
   jupytext:
-    formats: ipynb,qmd:quarto
+    formats: 'ipynb,qmd:quarto'
     text_representation:
       extension: .qmd
       format_name: quarto
@@ -12,13 +11,16 @@ jupyter:
     display_name: Haskell
     language: haskell
     name: haskell
+title: 변수와 함수 정의
 ---
+
+```{haskell}
+:set -Wno-x-partial
+```
 
 ```{haskell}
 putStrLn "Hello, Haskell!"
 ```
-
-
 
 ```{haskell}
 -- 정수 연산
@@ -37,9 +39,9 @@ let r   = 5.0 :: Double
 print (pi' * r * r)
 ```
 
-## 변수와 함수 정의
 
 Haskell에서 함수는 일급 시민(first-class citizen)입니다.
+
 
 ```{haskell}
 -- 간단한 함수 정의
@@ -94,6 +96,12 @@ print (a ++ b)
 -- 범위 표현
 print [1..10]
 print [2, 4..20]
+```
+
+```{haskell}
+-- 오류 발생
+1 / 0          -- 이건 무한대
+1 / (0 :: Int) -- 이건 에러
 ```
 
 ## 요약

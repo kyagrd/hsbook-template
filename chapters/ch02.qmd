@@ -1,8 +1,7 @@
 ---
-title: 패턴 매칭(Pattern Matching)
 jupyter:
   jupytext:
-    formats: ipynb,qmd:quarto
+    formats: 'ipynb,qmd:quarto'
     text_representation:
       extension: .qmd
       format_name: quarto
@@ -35,9 +34,7 @@ print (show True)
 print (show [1,2,3 :: Int])
 ```
 
-
 패턴 매칭은 Haskell에서 값의 구조를 분해하는 강력한 방법입니다.
-
 
 ```{haskell}
 -- 리스트 패턴 매칭

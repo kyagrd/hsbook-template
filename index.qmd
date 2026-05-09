@@ -1,11 +1,20 @@
 ---
-title: 머리말 {.unnumbered}
+title: 머리말
 jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.19.1
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
+
+\pagenumbering{roman}
+\markboth{Haskell 프로그래밍}{머리말}
 
 서문은 장 번호가 붙지 않아야 함
 
@@ -51,3 +60,8 @@ pip install jupytext jupyter jupyterlab
 ## 감사의 말
 
 ...
+
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+

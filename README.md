@@ -142,6 +142,7 @@ pip install jupyterlab-jupytext
    jupytext --to ipynb chapters/chXX.qmd
    ```
 1. `chXX.qmd` 파일을 생성하고 `chapters/chXX.qmd`를 embed 합니다.
+   (HTML 생성도 고려한다면 nbconvert로 ipynb에서 md를 생성해 include하는 것을 추천)
 1. `_quarto.yml`의 `chapters:` 목록에 `chXX.qmd` 파일을 추가합니다.
 
 ---
@@ -154,7 +155,7 @@ pip install jupyterlab-jupytext
 % 시스템에 설치된 한글 폰트로 교체 (예시)
 \setmainfont[Ligatures=TeX]{Noto Serif CJK KR}
 \setsansfont{Noto Sans CJK KR}
-\setmonofont{D2Coding}
+\setmonofont{Hack}
 ```
 
 `_quarto.yml`에서 문서 클래스 옵션을 조정할 수 있습니다:

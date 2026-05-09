@@ -2,6 +2,9 @@ project:
   type: book
   output-dir: _book
 
+filters:
+  - haskell-error-filter.lua  # 생성한 파일명
+
 book:
   title: "Haskell 프로그래밍"
   author: "저자 이름"
@@ -19,6 +22,7 @@ format:
     theme: cosmo
     toc: true
     toc-depth: 3
+    title-block-style: none   # 타이틀 블록 자체를 생성하지 않음
     number-sections: true
     highlight-style: github
     # echo: true
@@ -30,7 +34,7 @@ format:
       - 11pt
     pdf-engine: xelatex
     include-in-header: latex/preamble.tex
-    # keep-tex: true
+    keep-tex: true
     number-sections: true
     colorlinks: true
     highlight-style: github
@@ -38,6 +42,7 @@ format:
     # keep-ipynb: false
 
 execute:
+  execute-notebooks: false
   enabled: false
   freeze: true
   # echo: true
