@@ -1,5 +1,13 @@
 ---
-title: 기본 문법과 타입
+numbered: true
 ---
 
+# 기본 문법과 타입
+
+::: {.content-visible when-format="html"}
+{{< include chapters/ch01.md echo=true >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 {{< embed chapters/ch01.ipynb echo=true >}}
+:::

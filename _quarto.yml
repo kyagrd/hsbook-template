@@ -12,8 +12,9 @@ book:
   language: ko
   chapters:
     - index.qmd
-    - ch01.qmd
-    - ch02.qmd
+    - ch00.qmd # 머리말 (unnumbered 예시)
+    - ch01.qmd # ipynb include 예시 (section toc 생성 X)
+    - ch02.qmd # md embed 예시
 
 bibliography: references.bib
 

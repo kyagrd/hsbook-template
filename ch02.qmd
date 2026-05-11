@@ -1,5 +1,13 @@
 ---
-title: Haskell 소개
+numbered: true
 ---
 
+# Haskell 소개
+
+::: {.content-visible when-format="html"}
 {{< include chapters/ch02.md echo=true >}}
+:::
+
+::: {.content-visible when-format="pdf"}
+{{< embed chapters/ch02.ipynb echo=true >}}
+:::

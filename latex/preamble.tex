@@ -8,9 +8,9 @@
 % Uncomment and adjust if specific fonts are installed on your system.
 % For broad compatibility the defaults provided by kotex are used.
 %
-%\setmainfont[Ligatures=TeX]{Noto Serif CJK KR}
-%\setsansfont{Noto Sans CJK KR}
-%\setmonofont{D2Coding} % Hack1
+\setmainfont[Ligatures=TeX]{Noto Serif CJK KR}
+\setsansfont{Noto Sans CJK KR}
+\setmonofont{Hack} % D2Coding, etc
 
 % ── Mathematics ──────────────────────────────────────────────────────────────
 \usepackage{amsmath}
@@ -31,6 +31,25 @@
 \usepackage{fvextra}        % line-wrapping inside verbatim
 \fvset{baselinestretch=1.0} % 1.0은 기본, 0.8 등으로 줄여서 촘촘하게 가능
 \usepackage{mdframed}
+
+% 기존의 잘못된 표지 생성 로직을 완전히 무력화하고 강제로 표지 작성
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \centering
+    \vspace*{5cm}
+    {\Huge \bfseries \sffamily Haskell 프로그래밍 \par} % 책 제목 직접 명시
+    \vspace{2em}
+    {\Large 저자 이름 \par}
+    \vspace{1.5em}
+    {\large \today \par}
+  \end{titlepage}
+  \thispagestyle{empty}
+  \clearpage
+  \pagenumbering{roman} % 여기서부터 로마자 번호 시작
+}
+\makeatother
+
 
 % Wrap long lines in code blocks instead of overflowing the margin
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{

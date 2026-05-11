@@ -1,4 +1,5 @@
 ---
+title: 변수와 함수 정의
 jupyter:
   jupytext:
     formats: 'ipynb,qmd:quarto'
@@ -11,7 +12,6 @@ jupyter:
     display_name: Haskell
     language: haskell
     name: haskell
-title: 변수와 함수 정의
 ---
 
 ```{haskell}
@@ -39,9 +39,7 @@ let r   = 5.0 :: Double
 print (pi' * r * r)
 ```
 
-
 Haskell에서 함수는 일급 시민(first-class citizen)입니다.
-
 
 ```{haskell}
 -- 간단한 함수 정의
