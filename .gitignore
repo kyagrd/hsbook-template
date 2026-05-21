@@ -1,6 +1,7 @@
 # ── Quarto build output ──────────────────────────────────────────────────────
 _book/
 _freeze/
+site_libs/
 
 # ── LaTeX intermediate files ─────────────────────────────────────────────────
 *.aux

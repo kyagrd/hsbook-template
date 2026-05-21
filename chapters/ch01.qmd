@@ -1,5 +1,4 @@
 ---
-title: 변수와 함수 정의
 jupyter:
   jupytext:
     formats: 'ipynb,qmd:quarto'
@@ -13,6 +12,9 @@ jupyter:
     language: haskell
     name: haskell
 ---
+
+
+## 변수와 함수 정의
 
 ```{haskell}
 :set -Wno-x-partial

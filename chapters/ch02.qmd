@@ -13,6 +13,9 @@ jupyter:
     name: haskell
 ---
 
+
+## 패턴 매칭 (Pattern Mathcing)
+
 ```{haskell}
 -- Eq 타입 클래스: 동등 비교 ...
 print (1 == 1)

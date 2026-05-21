@@ -11,3 +11,4 @@ numbered: true
 ::: {.content-visible when-format="pdf"}
 {{< embed chapters/ch01.ipynb echo=true >}}
 :::
+
