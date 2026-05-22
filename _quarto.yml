@@ -31,8 +31,8 @@ format:
   pdf:
     documentclass: scrbook
     classoption:
-      - oneside
-      - 11pt
+      - twoside
+      - 10pt
     pdf-engine: xelatex
     include-in-header: latex/preamble.tex
     keep-tex: true
@@ -41,7 +41,17 @@ format:
     highlight-style: github
     # echo: true
     # keep-ipynb: false
-
+    geometry:
+      - paperwidth=7in
+      - paperheight=9.1in
+      - top=0.8in
+      - bottom=0.8in
+      - inner=0.7in
+      - outer=0.9in
+      - headheight=14pt
+      - headsep=0.25in
+      - footskip=0.25in
+      - includeheadfoot
 execute:
   execute-notebooks: false
   enabled: false
