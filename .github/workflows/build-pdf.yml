@@ -38,9 +38,14 @@ jobs:
             QUARTO_VERSION="1.6.40"
             curl -fsSL -o "quarto-${QUARTO_VERSION}-linux-amd64.deb" "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
             dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
+            # Install Python + Jupyter nbconvert
+            apt-get update -y && apt-get install -y python3 python3-pip
+            python3 -m pip install --no-cache-dir jupyter nbconvert
+            # Run make to generate chapters/*.md from chapters/*.ipynb
             make --version
             make
             ls -la chapters
+            # Render PDF via Quarto
             quarto render --to pdf --no-execute
 
       # ── 5. Upload the built PDF as a workflow artifact ───────────────────────
