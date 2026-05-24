@@ -44,12 +44,16 @@ hsbook-template/
 
 | 도구 | 설치 방법 |
 |------|-----------|
-| GHC / Cabal | `curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org \| sh` |
-| IHaskell 커널  | `cabal install ihaskell && ihaskell install` |
-| Jupyter | `pip install jupyter jupyterlab` |
-| Jupytext | `pip install jupytext` |
+| Jupyter 툴체인 (JupyterLab, Jupytext, nbconvert) | `pip install jupyterlab jupytext nbconvert` 또는 배포판 패키지로 설치 |
+| IHaskell 커널 | Juypter Docker Stacks 기반 IHaskell 도커 이미지 [ihaskell-notebook](https://github.com/IHaskell/ihaskell-notebook)활용을 추천 |
 | Quarto ≥ 1.4 | <https://quarto.org/docs/get-started/> |
-| XeLaTeX + kotex | TeX Live 또는 MiKTeX 설치 후 `kotex`, `scrbook(KOMA-Script)` 패키지 포함 |
+| TeX 툴체인 | TeX Live 또는 MiKTeX 설치 후 KOMA-Script, kotex, XeLaTeX, LuaLaTeX 등 필요한 패키지 포함 |
+
+Ubuntu(deb) 기준 Jupyter 툴체인 설치 명령 예시:
+```bash
+sudo apt update -y
+sudo apt install -y jupyterlab python3-nbconvert jupytext
+```
 
 > **kotex**는 XeLaTeX/LuaLaTeX 환경에서 동작합니다.  
 > TeX Live를 사용한다면 `texlive-lang-korean` 또는 `kotex` 패키지를 별도로 설치하세요.
