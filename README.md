@@ -11,15 +11,22 @@ IHaskell Jupyter Notebook 여러 개를 Jupytext로 동기화하고 Quarto로 �
 
 ```
 hsbook-template/
+├── .github/
+│   └── workflows/
+│       └── build-pdf.yml # GitHub Actions PDF 빌드 워크플로우
+├── .gitignore
 ├── _quarto.yml            # Quarto 책 프로젝트 설정
 ├── index.qmd              # 머리말
+├── ch00.qmd               # 0장
 ├── ch01.qmd               # 1장 (embed 통로)
 ├── ch02.qmd               # 2장 (embed 통로)
+├── haskell-error-filter.lua # Quarto/Jupyter 에러 메시지 필터 스크립트
+├── Makefile               # 빌드 자동화 명령 모음
 ├── chapters/              # embed로 가져오는 내용 (quarto에 등록 X)
-│   ├── ch01.qmd           # 1장 Quarto Markdown 원본
-│   ├── ch01.ipynb         # 1장 Jupyter Notebook (jupytext 동기)
-│   ├── ch02.qmd           # 2장 Quarto Markdown 원본
-│   └── ch02.ipynb         # 2장 Jupyter Notebook (jupytext 동기)
+│   ├── ch01.qmd           # 1장 Quarto Markdown 원본 (jupyter로 이것을 실행)
+│   ├── ch01.ipynb         # 1장 Jupyter Notebook (jupytext 동기화로 자동 생성/업데이트)
+│   ├── ch02.qmd           # 2장 Quarto Markdown 원본 (jupyter로 이것을 실행)
+│   └── ch02.ipynb         # 2장 Jupyter Notebook (jupytext 동기화로 자동 생성/업데이트)
 ├── latex/
 │   └── preamble.tex       # LaTeX 프리앰블 (kotex, scrbook 설정)
 ├── docker/
@@ -28,7 +35,7 @@ hsbook-template/
 │       └── README.md      # 도커 이미지 빌드 및 실행 안내
 ├── run_iqj.sh             # ihaskell-quarto-jupytext 도커 컨테이너 실행 스크립트
 ├── references.bib         # BibTeX 참고문헌
-└── .gitignore
+└── README.md
 ```
 
 ---
@@ -96,7 +103,11 @@ quarto render
 ## Jupytext 사용법
 
 `.qmd`와 `.ipynb` 파일은 항상 쌍으로 존재합니다.  
-**편집 후 반드시 동기화**하여 두 파일을 일치시키세요.
+편집과 실행은 `.qmd` 파일을 통해 진행하고
+그러한 변경 결과를 `.ipynb` 파일로 동기화합니다.
+참고로, `.ipynb` 파일은 한번 실행한 결과를 포함하여 pdf로
+렌더링하기 위한 자료이면서 `nbconvert`를 통해 html 렌더링에
+도움이 되는 `.md` 파일을 생성하는 데(`Makefile` 참고)도 활용됩니다. 
 
 ```bash
 # .qmd 파일을 수정한 뒤 .ipynb에 반영
@@ -114,6 +125,8 @@ JupyterLab에서는 **Jupytext 확장**을 설치하면 저장 시 자동으로 
 ```bash
 pip install jupyterlab-jupytext
 ```
+
+그러니 JupyterLab에서는 `.qmd` 파일만 편집/실행하면 됩니다. 
 
 ---
 

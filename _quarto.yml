@@ -13,8 +13,8 @@ book:
   chapters:
     - index.qmd
     - ch00.qmd # 머리말 (unnumbered 예시)
-    - ch01.qmd # ipynb include 예시 (section toc 생성 X)
-    - ch02.qmd # md embed 예시
+    - ch01.qmd
+    - ch02.qmd
 
 bibliography: references.bib
 
@@ -34,6 +34,10 @@ format:
       - twoside
       - 10pt
     pdf-engine: xelatex
+    # mainfont: "Noto Serif CJK KR"
+    # fontoptions: "Ligatures=TeX"
+    # sansfont: "Noto Sans CJK KR"
+    # monofont: "Hack"
     include-in-header: latex/preamble.tex
     keep-tex: true
     number-sections: true
