@@ -166,13 +166,11 @@ pip install jupyterlab-jupytext
 
 ## LaTeX 커스터마이징
 
-`latex/preamble.tex`에서 폰트·레이아웃 등을 조정할 수 있습니다.
+`latex/preamble.tex`에서 추가 패키지 활용 및 상세 레이아웃 조정 등을 설정할  수 있습니다.
 
 ```latex
-% 시스템에 설치된 한글 폰트로 교체 (예시)
-\setmainfont[Ligatures=TeX]{Noto Serif CJK KR}
-\setsansfont{Noto Sans CJK KR}
-\setmonofont{Hack}
+\usepackage{fvextra}        % line-wrapping inside verbatim
+\fvset{baselinestretch=1.0} % 1.0은 기본, 0.8 등으로 줄여서 촘촘하게 가능
 ```
 
 `_quarto.yml`에서 문서 클래스 옵션을 조정할 수 있습니다:
